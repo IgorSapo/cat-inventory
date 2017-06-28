@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_PATH=./src nodemon server.js --exec babel-node"
+    "start": "set NODE_PATH=./src; && nodemon server.js --exec babel-node"
   },
   "repository": {
     "type": "git",
@@ -22,21 +22,28 @@
     "babel-preset-stage-0": "^6.24.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
+    "history": "^4.6.3",
     "i": "^0.3.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.1",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.0",
     "clean-webpack-plugin": "^0.1.16",
     "eslint": "^4.1.1",
     "eslint-loader": "^1.8.0",
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "nodemon": "^1.11.0",
-    "webpack": "^3.0.0",
+    "redux-devtools-extension": "^2.13.2",
+    "webpack": "^2.2.1",
     "webpack-dev-server": "^2.5.0"
   }
 }

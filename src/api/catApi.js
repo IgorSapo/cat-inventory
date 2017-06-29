@@ -6,6 +6,8 @@
 //   }
 // }
 
+import { v4 } from 'uuid';
+
 let cats = [
   {
    id: "1", 
@@ -35,10 +37,20 @@ class catApi {
       ...cats.filter(catItem => catItem.id != cat.id),
       Object.assign({}, cat)
     ];
-    return new Promise(resolve => resolve(cat))
+    return new Promise(resolve => resolve(cat));
+  }
+
+  static createCat(cat) {
+    const newCat = Object.assign({}, cat, {id: v4()});
+    cats.push(newCat);
+    return new Promise(resolve => resolve(newCat));
+  }
+
+  static deleteCat(cat) {
+    const newCats = cats.filter(catItem => catItem != cat.id);
+    cats = newCats;
+    return new Promise(resolve => resolve(cat));
   }
 }
 
 export default catApi;
-
-

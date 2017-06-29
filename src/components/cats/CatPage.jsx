@@ -21,6 +21,7 @@ class CatPage extends React.Component {
     this.updateCatState = this.updateCatState.bind(this);
     this.updateCatHobbies = this.updateCatHobbies.bind(this);
     this.saveCat = this.saveCat.bind(this);
+    this.deleteCat = this.deleteCat.bind(this);
   }
 
   toggleEdit() {
@@ -70,6 +71,11 @@ class CatPage extends React.Component {
     }
   }
 
+  deleteCat(event) {
+    this.props.actions.deleteCat(this.state.cat);
+    this.props.history.push(`/cats/`);
+  }
+
   render() {
     if (this.state.isEditing) {
       return (
@@ -92,6 +98,7 @@ class CatPage extends React.Component {
         <p>temperament: {this.state.cat.temperament}</p>
         <HobbyList hobbies={this.props.catHobbies} />
         <button onClick={this.toggleEdit}>Edit</button>
+        <button onClick={this.deleteCat}>Delete</button>
       </div>
     )
   }
@@ -128,7 +135,8 @@ const mapStateToProps = (state, ownProps) => {
     );
 
   if(catId && state.cats.length > 0 && state.hobbies.length > 0) {
-    cat = Object.assign({}, state.cats.find(cat => cat.id === catId))
+    cat = Object.assign({}, state.cats.find(cat => cat.id === catId));
+    console.log(cat);
     if (cat.hobby_ids.length > 0) {
       checkBoxHobbies = getCheckBoxHobbies(state.hobbies, cat);
       catHobbies = getCatHobbies(state.hobbies, cat);

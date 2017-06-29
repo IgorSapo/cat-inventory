@@ -6,9 +6,9 @@ export const loadHobbiesSuccess = hobbies => ({
   hobbies
 });
 
-export const loadHobbiesFailure = hobbies => ({
+export const loadHobbiesFailure = error => ({
   type: types.LOAD_HOBBIES_FAILURE,
-  hobbies
+  error
 });
 
 export const loadHobbies = () => dispatch =>
